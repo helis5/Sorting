@@ -53,37 +53,37 @@ class Program
     }
 
     static void Shaker()
-{
-    int left = 0;
-    int right = arrs[0].Length - 1;
-    
-    while (left <= right)
     {
-        // Проход слева направо
-        for (int i = left; i < right; i++)
+        int left = 0;
+        int right = arrs[0].Length - 1;
+        
+        while (left <= right)
         {
-            if (arrs[1][i] > arrs[1][i + 1])
+            // Проход слева направо
+            for (int i = left; i < right; i++)
             {
-                int temp = arrs[1][i];
-                arrs[1][i] = arrs[1][i + 1];
-                arrs[1][i + 1] = temp;
+                if (arrs[1][i] > arrs[1][i + 1])
+                {
+                    int temp = arrs[1][i];
+                    arrs[1][i] = arrs[1][i + 1];
+                    arrs[1][i + 1] = temp;
+                }
             }
-        }
-        right--; // Уменьшаем правую границу, т.к. наибольший элемент уже на месте
+            right--; // Уменьшаем правую границу, т.к. наибольший элемент уже на месте
 
-        // Проход справа налево
-        for (int i = right; i > left; i--)
-        {
-            if (arrs[1][i - 1] > arrs[1][i])
+            // Проход справа налево
+            for (int i = right; i > left; i--)
             {
-                int temp = arrs[1][i];
-                arrs[1][i] = arrs[1][i - 1];
-                arrs[1][i - 1] = temp;
+                if (arrs[1][i - 1] > arrs[1][i])
+                {
+                    int temp = arrs[1][i];
+                    arrs[1][i] = arrs[1][i - 1];
+                    arrs[1][i - 1] = temp;
+                }
             }
+            left++; // Увеличиваем левую границу, т.к. наименьший элемент уже на месте
         }
-        left++; // Увеличиваем левую границу, т.к. наименьший элемент уже на месте
+        
+        PrintArray(arrs[1]);
     }
-    
-    PrintArray(arrs[1]);
-}
 }
