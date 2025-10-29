@@ -1,7 +1,7 @@
 ﻿using System;
 class Program
 {
-    // Создаем 7 копий массива ([][] на первом месте номер массива, на втором - индекс ячейки)
+    // Создаем 7 копий массива ([][] на первом месте индекс массива, на втором - ячейки)
     public static int[][] arrs = new int[7][];
 
     public static void Main()
@@ -25,6 +25,7 @@ class Program
         }
 
         Bubble();
+        Shaker();
     }
 
     static void PrintArray(int[] arr)
@@ -40,7 +41,7 @@ class Program
         {
             for (int j = 0; j < arrs[0].Length - i - 1; j++)
             {
-                if (arrs[0][j + 1] + 1 < arrs[0][j])
+                if (arrs[0][j + 1] < arrs[0][j])
                 {
                     int z = arrs[0][j + 1];
                     arrs[0][j + 1] = arrs[0][j];
@@ -50,4 +51,39 @@ class Program
         }
         PrintArray(arrs[0]);
     }
+
+    static void Shaker()
+{
+    int left = 0;
+    int right = arrs[0].Length - 1;
+    
+    while (left <= right)
+    {
+        // Проход слева направо
+        for (int i = left; i < right; i++)
+        {
+            if (arrs[1][i] > arrs[1][i + 1])
+            {
+                int temp = arrs[1][i];
+                arrs[1][i] = arrs[1][i + 1];
+                arrs[1][i + 1] = temp;
+            }
+        }
+        right--; // Уменьшаем правую границу, т.к. наибольший элемент уже на месте
+
+        // Проход справа налево
+        for (int i = right; i > left; i--)
+        {
+            if (arrs[1][i - 1] > arrs[1][i])
+            {
+                int temp = arrs[1][i];
+                arrs[1][i] = arrs[1][i - 1];
+                arrs[1][i - 1] = temp;
+            }
+        }
+        left++; // Увеличиваем левую границу, т.к. наименьший элемент уже на месте
+    }
+    
+    PrintArray(arrs[1]);
+}
 }
