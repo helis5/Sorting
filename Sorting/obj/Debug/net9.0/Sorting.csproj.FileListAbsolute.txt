@@ -1,0 +1,15 @@
+/home/helis/c#/Sorting/Sorting/bin/Debug/net9.0/Sorting
+/home/helis/c#/Sorting/Sorting/bin/Debug/net9.0/Sorting.deps.json
+/home/helis/c#/Sorting/Sorting/bin/Debug/net9.0/Sorting.runtimeconfig.json
+/home/helis/c#/Sorting/Sorting/bin/Debug/net9.0/Sorting.dll
+/home/helis/c#/Sorting/Sorting/bin/Debug/net9.0/Sorting.pdb
+/home/helis/c#/Sorting/Sorting/obj/Debug/net9.0/Sorting.GeneratedMSBuildEditorConfig.editorconfig
+/home/helis/c#/Sorting/Sorting/obj/Debug/net9.0/Sorting.AssemblyInfoInputs.cache
+/home/helis/c#/Sorting/Sorting/obj/Debug/net9.0/Sorting.AssemblyInfo.cs
+/home/helis/c#/Sorting/Sorting/obj/Debug/net9.0/Sorting.csproj.CoreCompileInputs.cache
+/home/helis/c#/Sorting/Sorting/obj/Debug/net9.0/Sorting.sourcelink.json
+/home/helis/c#/Sorting/Sorting/obj/Debug/net9.0/Sorting.dll
+/home/helis/c#/Sorting/Sorting/obj/Debug/net9.0/refint/Sorting.dll
+/home/helis/c#/Sorting/Sorting/obj/Debug/net9.0/Sorting.pdb
+/home/helis/c#/Sorting/Sorting/obj/Debug/net9.0/Sorting.genruntimeconfig.cache
+/home/helis/c#/Sorting/Sorting/obj/Debug/net9.0/ref/Sorting.dll
