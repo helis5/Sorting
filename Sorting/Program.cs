@@ -26,6 +26,7 @@ class Program
 
         Bubble();
         Shaker();
+        Selection();
     }
 
     static void PrintArray(int[] arr)
@@ -56,7 +57,7 @@ class Program
     {
         int left = 0;
         int right = arrs[0].Length - 1;
-        
+
         while (left <= right)
         {
             // Проход слева направо
@@ -83,7 +84,27 @@ class Program
             }
             left++; // Увеличиваем левую границу, т.к. наименьший элемент уже на месте
         }
-        
+
         PrintArray(arrs[1]);
+    }
+    
+    static void Selection()
+    {
+        for (int i = 0; i < arrs[2].Length - 1; i++)
+        {
+            int max = arrs[2][0];
+            int maxIndex = 0;
+            for (int j = 0; j < arrs[2].Length - i; j++)
+            {
+                if (arrs[2][j] > max) {
+                    max = arrs[2][j];
+                    maxIndex = j;
+                }
+            }
+            int t = arrs[2][arrs[2].Length - i - 1];
+            arrs[2][arrs[2].Length - i - 1] = arrs[2][maxIndex];
+            arrs[2][maxIndex] = t;
+        }
+        PrintArray(arrs[2]);
     }
 }
