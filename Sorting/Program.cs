@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.VisualBasic.FileIO;
 class Program
 {
     // Создаем 7 копий массива ([][] на первом месте индекс массива, на втором - ячейки)
@@ -27,6 +28,7 @@ class Program
         Bubble();
         Shaker();
         Selection();
+        Incert();
     }
 
     static void PrintArray(int[] arr)
@@ -87,7 +89,7 @@ class Program
 
         PrintArray(arrs[1]);
     }
-    
+    //ищем максимальный и ставим в конец
     static void Selection()
     {
         for (int i = 0; i < arrs[2].Length - 1; i++)
@@ -96,7 +98,8 @@ class Program
             int maxIndex = 0;
             for (int j = 0; j < arrs[2].Length - i; j++)
             {
-                if (arrs[2][j] > max) {
+                if (arrs[2][j] > max)
+                {
                     max = arrs[2][j];
                     maxIndex = j;
                 }
@@ -107,4 +110,21 @@ class Program
         }
         PrintArray(arrs[2]);
     }
+static void Incert()
+{
+    for (int i = 1; i < arrs[3].Length; i++)
+    {
+        int t = arrs[3][i];
+        int j = i;
+        
+        // Сдвигаем элементы вправо, пока не найдем место для t
+        while (j > 0 && arrs[3][j - 1] > t)
+        {
+            arrs[3][j] = arrs[3][j - 1];
+            j--;
+        }
+        arrs[3][j] = t; // Вставляем сохраненный элемент
+    }
+    PrintArray(arrs[3]);
+}
 }
