@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualBasic.FileIO;
+using System.Diagnostics;
 class Program
 {
     // Создаем 7 копий массива ([][] на первом месте индекс массива, на втором - ячейки)
@@ -7,7 +8,7 @@ class Program
 
     public static void Main()
     {
-        int[] origArr = new int[10];
+        int[] origArr = new int[30];
         Random rnd = new Random();
 
         // Заполняем массив случайными числами
@@ -19,6 +20,7 @@ class Program
         // Выводим исходный массив
         Console.WriteLine("Исходный массив:");
         PrintArray(origArr);
+        Console.WriteLine("---------------------");
 
         for (int i = 0; i < arrs.Length; i++)
         {
@@ -29,6 +31,7 @@ class Program
         Shaker();
         Selection();
         Incert();
+        Shellsort();
     }
 
     static void PrintArray(int[] arr)
@@ -40,6 +43,8 @@ class Program
     // сортировка пузырьком
     static void Bubble()
     {
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
         for (int i = 0; i < arrs[0].Length; i++)
         {
             for (int j = 0; j < arrs[0].Length - i - 1; j++)
@@ -52,11 +57,15 @@ class Program
                 }
             }
         }
+        stopwatch.Stop();
+        Console.WriteLine(stopwatch.ElapsedTicks);
         PrintArray(arrs[0]);
     }
 
     static void Shaker()
     {
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
         int left = 0;
         int right = arrs[0].Length - 1;
 
@@ -86,12 +95,15 @@ class Program
             }
             left++; // Увеличиваем левую границу, т.к. наименьший элемент уже на месте
         }
-
+        stopwatch.Stop();
+        Console.WriteLine(stopwatch.ElapsedTicks);
         PrintArray(arrs[1]);
     }
     //ищем максимальный и ставим в конец
     static void Selection()
     {
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
         for (int i = 0; i < arrs[2].Length - 1; i++)
         {
             int max = arrs[2][0];
@@ -108,23 +120,53 @@ class Program
             arrs[2][arrs[2].Length - i - 1] = arrs[2][maxIndex];
             arrs[2][maxIndex] = t;
         }
+        stopwatch.Stop();
+        Console.WriteLine(stopwatch.ElapsedTicks);
         PrintArray(arrs[2]);
     }
-static void Incert()
-{
-    for (int i = 1; i < arrs[3].Length; i++)
+    static void Incert()
     {
-        int t = arrs[3][i];
-        int j = i;
-        
-        // Сдвигаем элементы вправо, пока не найдем место для t
-        while (j > 0 && arrs[3][j - 1] > t)
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
+        for (int i = 1; i < arrs[3].Length; i++)
         {
-            arrs[3][j] = arrs[3][j - 1];
-            j--;
+            int t = arrs[3][i];
+            int j = i;
+
+            // Сдвигаем элементы вправо, пока не найдем место для t
+            while (j > 0 && arrs[3][j - 1] > t)
+            {
+                arrs[3][j] = arrs[3][j - 1];
+                j--;
+            }
+            arrs[3][j] = t; // Вставляем сохраненный элемент
         }
-        arrs[3][j] = t; // Вставляем сохраненный элемент
+        stopwatch.Stop();
+        Console.WriteLine(stopwatch.ElapsedTicks);
+        PrintArray(arrs[3]);
     }
-    PrintArray(arrs[3]);
-}
+    static void Shellsort()
+    {
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
+        int d = arrs[4].Length / 2;
+        while (d >= 1)
+        {
+            for (int i = d; i < arrs[4].Length; i++)
+            {
+                int j = i;
+                while ((j >= d) && (arrs[4][j - d] > arrs[4][j]))
+                {
+                    int t = arrs[4][j - d];
+                    arrs[4][j - d] = arrs[4][j];
+                    arrs[4][j] = t;
+                    j = j - d;
+                }
+            }
+            d = d / 2;
+        }
+        stopwatch.Stop();
+        Console.WriteLine(stopwatch.ElapsedTicks);
+        PrintArray(arrs[4]);
+    }
 }
