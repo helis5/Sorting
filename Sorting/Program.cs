@@ -33,6 +33,7 @@ class Program
         Selection();
         Incert();
         Shellsort();
+        QSort();
     }
 
     static void PrintArray(int[] arr)
@@ -213,16 +214,29 @@ class Program
         Console.WriteLine(sec);
         PrintArray(arr);
     }
+
     static void QSort()
     {
-        int[] arr = arrs[6];
-        Stopwatch Sw = new Stopwatch();
-        Sw.Start();
-        long freq = Stopwatch.Frequency;
+        int[] SortQuick(int[] arr)
+        {
+            //Базовый случай>>
+            if (arr.Length < 2) { return arr; }
 
-        Sw.Stop();
-        double sec = (double)Sw.ElapsedTicks / freq;
-        Console.WriteLine(sec);
-        PrintArray(arrs[5]);
+            //Рекурсивный случай
+            //Выбираем опорный элемент (пусть это будет первый элемент)
+            int support = arr[0];
+
+            //Разделяем на подмассивы
+            //Передавая элементы отобранные по критериям рекурсивно в метод SortQuick
+            int[] left = SortQuick(arr.Where(x => x < support).ToArray());
+            int[] right = SortQuick(arr.Where(x => x > support).ToArray());
+            int[] center = arr.Where(x => x == support).ToArray();
+
+            //Возвращаем правильно склеенный массив
+            return left.Concat(center).Concat(right).ToArray();
+        }
+
+        Console.WriteLine(SortQuick(arrs[6]));
     }
+
 }
