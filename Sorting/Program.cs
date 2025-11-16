@@ -44,29 +44,31 @@ class Program
     // сортировка пузырьком
     static void Bubble()
     {
+        int[] arr = arrs[0];
         Stopwatch Sw = new Stopwatch();
         Sw.Start();
         long freq = Stopwatch.Frequency; 
-        for (int i = 0; i < arrs[0].Length; i++)
+        for (int i = 0; i < arr.Length; i++)
         {
-            for (int j = 0; j < arrs[0].Length - 1; j++)
+            for (int j = 0; j < arr.Length - 1; j++)
             {
-                if (arrs[0][j + 1] < arrs[0][j])
+                if (arr[j + 1] < arr[j])
                 {
-                    int z = arrs[0][j + 1];
-                    arrs[0][j + 1] = arrs[0][j];
-                    arrs[0][j] = z;
+                    int z = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = z;
                 }
             }
         }
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
         Console.WriteLine(sec);
-        PrintArray(arrs[0]);
+        PrintArray(arr);
     }
 
     static void BubbleImp()
     {
+        int[] arr = arrs[1];
         Stopwatch Sw = new Stopwatch();
         Sw.Start();
         long freq = Stopwatch.Frequency; 
@@ -74,13 +76,13 @@ class Program
         while (k > 0)
         {
             k = 0;
-            for (int j = 0; j < arrs[5].Length - 1; j++)
+            for (int j = 0; j < arr.Length - 1; j++)
             {
-                if (arrs[5][j + 1] < arrs[5][j])
+                if (arr[j + 1] < arr[j])
                 {
-                    int z = arrs[5][j + 1];
-                    arrs[5][j + 1] = arrs[5][j];
-                    arrs[5][j] = z;
+                    int z = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = z;
                     k++;
                 }
             }
@@ -89,27 +91,28 @@ class Program
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
         Console.WriteLine(sec);
-        PrintArray(arrs[5]);        
+        PrintArray(arr);        
     }
 
     static void Shaker()
     {
+        int[] arr = arrs[2];
         Stopwatch Sw = new Stopwatch();
         Sw.Start();
         long freq = Stopwatch.Frequency; 
         int left = 0;
-        int right = arrs[0].Length - 1;
+        int right = arr.Length - 1;
 
         while (left <= right)
         {
             // Проход слева направо
             for (int i = left; i < right; i++)
             {
-                if (arrs[1][i] > arrs[1][i + 1])
+                if (arr[i] > arr[i + 1])
                 {
-                    int temp = arrs[1][i];
-                    arrs[1][i] = arrs[1][i + 1];
-                    arrs[1][i + 1] = temp;
+                    int temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
                 }
             }
             right--; // Уменьшаем правую границу, т.к. наибольший элемент уже на месте
@@ -117,11 +120,11 @@ class Program
             // Проход справа налево
             for (int i = right; i > left; i--)
             {
-                if (arrs[1][i - 1] > arrs[1][i])
+                if (arr[i - 1] > arr[i])
                 {
-                    int temp = arrs[1][i];
-                    arrs[1][i] = arrs[1][i - 1];
-                    arrs[1][i - 1] = temp;
+                    int temp = arr[i];
+                    arr[i] = arr[i - 1];
+                    arr[i - 1] = temp;
                 }
             }
             left++; // Увеличиваем левую границу, т.к. наименьший элемент уже на месте
@@ -129,74 +132,77 @@ class Program
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
         Console.WriteLine(sec);
-        PrintArray(arrs[1]);
+        PrintArray(arr);
     }
     //ищем максимальный и ставим в конец
     static void Selection()
     {
+        int[] arr = arrs[3];
         Stopwatch Sw = new Stopwatch();
         Sw.Start();
         long freq = Stopwatch.Frequency; 
-        for (int i = 0; i < arrs[2].Length - 1; i++)
+        for (int i = 0; i < arr.Length - 1; i++)
         {
-            int max = arrs[2][0];
+            int max = arr[0];
             int maxIndex = 0;
-            for (int j = 0; j < arrs[2].Length - i; j++)
+            for (int j = 0; j < arr.Length - i; j++)
             {
-                if (arrs[2][j] > max)
+                if (arr[j] > max)
                 {
-                    max = arrs[2][j];
+                    max = arr[j];
                     maxIndex = j;
                 }
             }
-            int t = arrs[2][arrs[2].Length - i - 1];
-            arrs[2][arrs[2].Length - i - 1] = arrs[2][maxIndex];
-            arrs[2][maxIndex] = t;
+            int t = arr[arr.Length - i - 1];
+            arr[arr.Length - i - 1] = arr[maxIndex];
+            arr[maxIndex] = t;
         }
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
         Console.WriteLine(sec);
-        PrintArray(arrs[2]);
+        PrintArray(arr);
     }
     static void Incert()
     {
+        int[] arr = arrs[4];
         Stopwatch Sw = new Stopwatch();
         Sw.Start();
         long freq = Stopwatch.Frequency; 
-        for (int i = 1; i < arrs[3].Length; i++)
+        for (int i = 1; i < arr.Length; i++)
         {
-            int t = arrs[3][i];
+            int t = arr[i];
             int j = i;
 
             // Сдвигаем элементы вправо, пока не найдем место для t
-            while (j > 0 && arrs[3][j - 1] > t)
+            while (j > 0 && arr[j - 1] > t)
             {
-                arrs[3][j] = arrs[3][j - 1];
+                arr[j] = arr[j - 1];
                 j--;
             }
-            arrs[3][j] = t; // Вставляем сохраненный элемент
+            arr[j] = t; // Вставляем сохраненный элемент
         }
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
         Console.WriteLine(sec);
-        PrintArray(arrs[3]);
+        PrintArray(arr);
     }
     static void Shellsort()
     {
+        int[] arr = arrs[5];
         Stopwatch Sw = new Stopwatch();
         Sw.Start();
-        long freq = Stopwatch.Frequency; 
-        int d = arrs[4].Length / 2;
+        long freq = Stopwatch.Frequency;
+        int d = arr.Length / 2;
         while (d >= 1)
         {
-            for (int i = d; i < arrs[4].Length; i++)
+            for (int i = d; i < arr.Length; i++)
             {
                 int j = i;
-                while ((j >= d) && (arrs[4][j - d] > arrs[4][j]))
+                while ((j >= d) && (arr[j - d] > arr[j]))
                 {
-                    int t = arrs[4][j - d];
-                    arrs[4][j - d] = arrs[4][j];
-                    arrs[4][j] = t;
+                    int t = arr[j - d];
+                    arr[j - d] = arr[j];
+                    arr[j] = t;
                     j = j - d;
                 }
             }
@@ -205,6 +211,18 @@ class Program
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
         Console.WriteLine(sec);
-        PrintArray(arrs[4]);
+        PrintArray(arr);
+    }
+    static void QSort()
+    {
+        int[] arr = arrs[6];
+        Stopwatch Sw = new Stopwatch();
+        Sw.Start();
+        long freq = Stopwatch.Frequency;
+
+        Sw.Stop();
+        double sec = (double)Sw.ElapsedTicks / freq;
+        Console.WriteLine(sec);
+        PrintArray(arrs[5]);
     }
 }
