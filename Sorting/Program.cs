@@ -8,7 +8,7 @@ class Program
 
     public static void Main()
     {
-        int[] origArr = new int[200];
+        int[] origArr = new int[10];
         Random rnd = new Random();
 
         // Заполняем массив случайными числами
@@ -46,7 +46,7 @@ class Program
     static void Bubble()
     {
         int[] arr = arrs[0];
-        int ks = 0; int kp = 0;
+        long ks = 0; long kp = 0;
         Stopwatch Sw = new Stopwatch();
         Sw.Start();
         long freq = Stopwatch.Frequency; 
@@ -67,15 +67,15 @@ class Program
         }
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
+        PrintArray(arr);
         Console.WriteLine(sec);
         Console.WriteLine($"К. сравнений: {ks}, к. перестановок: {kp}");
-        PrintArray(arr);
     }
 
     static void BubbleImp()
     {
         int[] arr = arrs[1];
-        int ks = 0; int kp = 0;
+        long ks = 0; long kp = 0;
         Stopwatch Sw = new Stopwatch();
         Sw.Start();
         long freq = Stopwatch.Frequency; 
@@ -100,15 +100,15 @@ class Program
         }
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
+        PrintArray(arr);  
         Console.WriteLine(sec);
-        Console.WriteLine($"К. сравнений: {ks}, к. перестановок: {kp}");
-        PrintArray(arr);        
+        Console.WriteLine($"К. сравнений: {ks}, к. перестановок: {kp}");      
     }
 
     static void Shaker()
     {
         int[] arr = arrs[2];
-        int ks = 0; int kp = 0;
+        long ks = 0; long kp = 0;
         Stopwatch Sw = new Stopwatch();
         Sw.Start();
         long freq = Stopwatch.Frequency; 
@@ -148,15 +148,15 @@ class Program
         }
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
+        PrintArray(arr);
         Console.WriteLine(sec);
         Console.WriteLine($"К. сравнений: {ks}, к. перестановок: {kp}");
-        PrintArray(arr);
     }
     //ищем максимальный и ставим в конец
     static void Selection()
     {
         int[] arr = arrs[3];
-        int ks = 0; int kp = 0;
+        long ks = 0; long kp = 0;
         Stopwatch Sw = new Stopwatch();
         Sw.Start();
         long freq = Stopwatch.Frequency; 
@@ -181,14 +181,14 @@ class Program
         }
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
+        PrintArray(arr);
         Console.WriteLine(sec);
         Console.WriteLine($"К. сравнений: {ks}, к. перестановок: {kp}");
-        PrintArray(arr);
     }
     static void Incert()
     {
         int[] arr = arrs[4];
-        int ks = 0; int kp = 0;
+        long ks = 0; long kp = 0;
         Stopwatch Sw = new Stopwatch();
         Sw.Start();
         long freq = Stopwatch.Frequency; 
@@ -210,14 +210,14 @@ class Program
         }
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
+        PrintArray(arr);
         Console.WriteLine(sec);
         Console.WriteLine($"К. сравнений: {ks}, к. перестановок: {kp}");
-        PrintArray(arr);
     }
     static void Shellsort()
     {
         int[] arr = arrs[5];
-        int ks = 0; int kp = 0;
+        long ks = 0; long kp = 0;
         Stopwatch Sw = new Stopwatch();
         Sw.Start();
         long freq = Stopwatch.Frequency;
@@ -243,14 +243,14 @@ class Program
         }
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
+        PrintArray(arr);
         Console.WriteLine(sec);
         Console.WriteLine($"К. сравнений: {ks}, к. перестановок: {kp}");
-        PrintArray(arr);
     }
 
     static void QSort()
     {
-        int ks = 0; int kp = 0;
+        long ks = 0; long kp = 0;
         Stopwatch Sw = new Stopwatch();
         Sw.Start();
         long freq = Stopwatch.Frequency;
@@ -276,10 +276,11 @@ class Program
         }
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
-        Console.WriteLine(sec);
+        
         
         Console.WriteLine(string.Join(" ", SortQuick(arrs[6])));
         Console.WriteLine($"К. сравнений: {kp}, к. перестановок: {kp}");
+        Console.WriteLine(sec);
     }
 
 }
