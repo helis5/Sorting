@@ -27,13 +27,13 @@ class Program
             arrs[i] = (int[])origArr.Clone();  //.Clone возвращает Object, поэтому явно укажем (int[])
         }
 
-        Bubble();
+        // Bubble();
         BubbleImp();
-        Shaker();
-        Selection();
-        Incert();
-        Shellsort();
-        QSort();
+        // Shaker();
+        // Selection();
+        // Incert();
+        // Shellsort();
+        // QSort();
     }
 
     static void PrintArray(int[] arr)
@@ -52,10 +52,10 @@ class Program
         long freq = Stopwatch.Frequency; 
         for (int i = 0; i < arr.Length; i++)
         {
-            ks++;
+            //ks++;
             for (int j = 0; j < arr.Length - 1; j++)
             {
-                ks+=2;
+                ks++;
                 if (arr[j + 1] < arr[j])
                 {
                     int z = arr[j + 1];
@@ -81,12 +81,12 @@ class Program
         long freq = Stopwatch.Frequency; 
         int i = 0; int k = 1;
         while (k > 0)
-        {
+        {   
             ks++;
             k = 0;
             for (int j = 0; j < arr.Length - 1; j++)
             {
-                ks+=2;
+                ks++;
                 if (arr[j + 1] < arr[j])
                 {
                     kp++;
@@ -115,36 +115,40 @@ class Program
         int left = 0;
         int right = arr.Length - 1;
 
-        while (left <= right)
+        while (left < right)
         {
-            ks++;
+            //ks++;
+            int k = left; // запоминаем позицию для обновления right
+
             // Проход слева направо
             for (int i = left; i < right; i++)
             {
-                ks+=2;
+                ks++;
                 if (arr[i] > arr[i + 1])
                 {
                     kp++;
                     int temp = arr[i];
                     arr[i] = arr[i + 1];
                     arr[i + 1] = temp;
+                    k = i; // запоминаем позицию последней перестановки
                 }
             }
-            right--; // Уменьшаем правую границу, т.к. наибольший элемент уже на месте
+            right = k; // обновляем правую границу до последней перестановки
 
             // Проход справа налево
             for (int i = right; i > left; i--)
             {
-                ks+=2;
+                ks++;
                 if (arr[i - 1] > arr[i])
                 {
                     kp++;
                     int temp = arr[i];
                     arr[i] = arr[i - 1];
                     arr[i - 1] = temp;
+                    k = i; // запоминаем позицию последней перестановки
                 }
             }
-            left++; // Увеличиваем левую границу, т.к. наименьший элемент уже на месте
+            left = k; // обновляем левую границу до последней перестановки
         }
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
@@ -162,12 +166,12 @@ class Program
         long freq = Stopwatch.Frequency; 
         for (int i = 0; i < arr.Length - 1; i++)
         {
-            ks++;
-            int max = arr[0];
-            int maxIndex = 0;
-            for (int j = 0; j < arr.Length - i; j++)
+            //ks++;
+            int max = arr[i];
+            int maxIndex = i;
+            for (int j = i+1; j < arr.Length - i; j++)
             {
-                ks+=2;
+                ks++;
                 if (arr[j] > max)
                 {
                     max = arr[j];
@@ -194,7 +198,7 @@ class Program
         long freq = Stopwatch.Frequency; 
         for (int i = 1; i < arr.Length; i++)
         {
-            ks++;
+            //ks++;
             int t = arr[i];
             int j = i;
 
@@ -202,11 +206,11 @@ class Program
             while (j > 0 && arr[j - 1] > t)
             {
                 ks+=2;
-                kp++;
                 arr[j] = arr[j - 1];
                 j--;
             }
             arr[j] = t; // Вставляем сохраненный элемент
+            kp++;
         }
         Sw.Stop();
         double sec = (double)Sw.ElapsedTicks / freq;
@@ -224,7 +228,7 @@ class Program
         int d = arr.Length / 2;
         while (d >= 1)
         {
-            ks++;
+            //ks++;
             for (int i = d; i < arr.Length; i++)
             {
                 ks++;
@@ -282,5 +286,4 @@ class Program
         Console.WriteLine($"К. сравнений: {kp}, к. перестановок: {kp}");
         Console.WriteLine(sec);
     }
-
 }
