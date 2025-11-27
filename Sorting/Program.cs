@@ -27,13 +27,13 @@ class Program
             arrs[i] = (int[])origArr.Clone();  //.Clone возвращает Object, поэтому явно укажем (int[])
         }
 
-        // Bubble();
+        Bubble();
         BubbleImp();
-        // Shaker();
-        // Selection();
-        // Incert();
-        // Shellsort();
-        // QSort();
+        Shaker();
+        Selection();
+        Incert();
+        Shellsort();
+        QSort();
     }
 
     static void PrintArray(int[] arr)
